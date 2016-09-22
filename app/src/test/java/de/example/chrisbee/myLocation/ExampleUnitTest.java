@@ -1,4 +1,4 @@
-package de.example.frank.location;
+package de.example.chrisbee.myLocation;
 
 import org.junit.Test;
 

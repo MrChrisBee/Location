@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="de.example.frank.location">
+    package="de.example.chrisbee.myLocation">
 
     <!--
          The following three permissions are required for
@@ -15,7 +15,7 @@
         android:icon="@drawable/icon"
         android:label="@string/app_name">
         <activity
-            android:name=".MainActivity"
+            android:name="de.example.chrisbee.myLocation.MainActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,11 +36,11 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".MapsActivity"
+            android:name="de.example.chrisbee.myLocation.MapsActivity"
             android:label="@string/title_activity_maps">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="de.example.frank.location.MainActivity" />
+                android:value="de.example.chrisbee.myLocation.MainActivity" />
         </activity>
     </application>
 

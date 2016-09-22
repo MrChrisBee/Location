@@ -1,8 +1,11 @@
-package de.example.frank.location;
+package de.example.chrisbee.myLocation;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.util.Log;
 
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -36,11 +39,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        try {
+            mMap = googleMap;
+            Intent intent = getIntent();
+            LatLng position = new LatLng(intent.getDoubleExtra("Lat", -34), intent.getDoubleExtra("Lon", 151));
+            // Add a marker in Sydney and move the camera
+
+            mMap.addMarker(new MarkerOptions().position(position).title("Hier steckst Du derzeit (Hoffentlich)"));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(position));
+            mMap.setMyLocationEnabled(true);
+            CameraUpdate cu = CameraUpdateFactory.newLatLngZoom(position, 15.0f);
+            mMap.animateCamera(cu);
+        } catch (SecurityException se) {
+            Log.e("Google Maps Api", "Die App hat keine ausreichenden Rechte");
+        }
+
     }
+
 }

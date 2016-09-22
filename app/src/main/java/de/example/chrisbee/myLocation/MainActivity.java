@@ -1,4 +1,4 @@
-package de.example.frank.location;
+package de.example.chrisbee.myLocation;
 
 import android.Manifest;
 import android.annotation.TargetApi;
@@ -149,7 +149,7 @@ public class MainActivity extends Activity {
                     // for ActivityCompat#requestPermissions for more details.
                     return;
                 }
-                manager.requestLocationUpdates("network", 5000, 0, listener);
+                manager.requestLocationUpdates("gps", 5000, 0, listener);
                 Log.d(TAG, "setOnClickListener manager.requestLocationUpdates");
 
             }
@@ -169,11 +169,12 @@ public class MainActivity extends Activity {
                     // for ActivityCompat#requestPermissions for more details.
                     return;
                 }
-                intent.putExtra("Lat", manager.getLastKnownLocation("network").getLatitude());
-                intent.putExtra("Lon" , manager.getLastKnownLocation("network").getLongitude());
+                intent.putExtra("Lat", manager.getLastKnownLocation("gps").getLatitude());
+                intent.putExtra("Lon" , manager.getLastKnownLocation("gps").getLongitude());
                 startActivity(intent);
             }
         });
     }
+
 
 }
